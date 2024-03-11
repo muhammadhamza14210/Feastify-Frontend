@@ -26,9 +26,7 @@ export const useGetMyUser = () => {
     data: currentUser,
     isLoading,
     error,
-  } = useQuery("fetchCurrentUser", getMyUser, {
-    initialData: undefined,
-  });
+  } = useQuery("fetchCurrentUser", getMyUser);
 
   if (error) {
     toast.error(error.toString());

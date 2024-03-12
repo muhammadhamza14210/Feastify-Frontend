@@ -14,7 +14,7 @@ const MobileNavLinks = () => {
       </Link>
 
       <Button
-        onClick={() => logout()}
+        onClick={() => logout({returnTo: process.env.VITE_AUTH0_CALLBACK_URL} as LogoutOptions)}
         className="flex items-center px-3 font-bold hover:bg-gray-500"
       >
         Log Out

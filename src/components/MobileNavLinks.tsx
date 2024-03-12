@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-import { useAuth0 } from "@auth0/auth0-react";
+import { LogoutOptions, useAuth0 } from "@auth0/auth0-react";
 
 const MobileNavLinks = () => {
   const { logout } = useAuth0();
@@ -14,7 +14,7 @@ const MobileNavLinks = () => {
       </Link>
 
       <Button
-        onClick={() => logout()}
+        onClick={() => logout({ returnTo: "https://feastify-frontend.onrender.com/"} as LogoutOptions)}
         className="flex items-center px-3 font-bold hover:bg-gray-500"
       >
         Log Out

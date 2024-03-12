@@ -83,8 +83,10 @@ type UpdateMyUserRequest = {
 };
 export const useUpdateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
+
   const updateMyUserRequest = async (formData: UpdateMyUserRequest) => {
     const accessToken = await getAccessTokenSilently();
+
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "PUT",
       headers: {
@@ -93,8 +95,9 @@ export const useUpdateMyUser = () => {
       },
       body: JSON.stringify(formData),
     });
+
     if (!response.ok) {
-      throw new Error("Error updating user");
+      throw new Error("Failed to update user");
     }
 
     return response.json();
@@ -104,20 +107,18 @@ export const useUpdateMyUser = () => {
     mutateAsync: updateUser,
     isLoading,
     isSuccess,
-    reset,
     error,
+    reset,
   } = useMutation(updateMyUserRequest);
 
   if (isSuccess) {
-    toast.success("User updated successfully");
+    toast.success("User profile updated!");
   }
+
   if (error) {
     toast.error(error.toString());
     reset();
   }
 
-  return {
-    updateUser,
-    isLoading,
-  };
+  return { updateUser, isLoading };
 };

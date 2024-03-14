@@ -3,6 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import DetailSection from "./DetailSection";
+import { Separator } from "@/components/ui/separator";
+import CuisineSection from "./CuisineSection";
 
 const formSchema = z.object({
   restaurantName: z.string({ required_error: "restaurant is required" }),
@@ -51,6 +53,8 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
         className="space-y-8 bg-gray-50 p-10 rounded-lg"
       >
         <DetailSection />
+        <Separator />
+        <CuisineSection />
       </form>
     </Form>
   );
